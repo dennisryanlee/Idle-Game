@@ -73,12 +73,6 @@ IdleScape is an idle / incremental game based on the MMORPG Runescape. The playe
 - Feature 2
 - Feature 3 -->
 
-<!-- Deployment -->
-
-### Deployment
-
-Idlescape is deployed on Heroku at [https://ejmdev-idlescape.herokuapp.com/](https://ejmdev-idlescape.herokuapp.com/)
-
 <!-- Roadmap -->
 
 ## Roadmap
