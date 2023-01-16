@@ -2,10 +2,23 @@ import { MongoClient, ServerApiVersion, WithId } from "mongodb";
 import * as Types from "../../../Types";
 import { DB_CONFIG } from "../config";
 
-const Mongo_Name = DB_CONFIG.name;
-const Mongo_Pass = DB_CONFIG.password;
+const Mongo_Protocol = DB_CONFIG.protocol;
+const Mongo_Host = DB_CONFIG.host;
+const Mongo_Port = DB_CONFIG.port ? `:${DB_CONFIG.port}` : '';
+const Mongo_Database = DB_CONFIG.database || '';
+const Mongo_Username = DB_CONFIG.username || '';
+const Mongo_Password = DB_CONFIG.password ? `:${DB_CONFIG.password}` : '';
 
-const uri = `mongodb+srv://${Mongo_Name}:${Mongo_Pass}@cluster0.2twg6.mongodb.net/?retryWrites=true&w=majority`;
+console.log({
+  Mongo_Username,
+  Mongo_Password
+})
+
+const Mongo_Credentials = Mongo_Username || Mongo_Password ? `${Mongo_Username}${Mongo_Password}@` : ''
+
+const uri = `${Mongo_Protocol}//${Mongo_Credentials}${Mongo_Host}${Mongo_Port}/${Mongo_Database}?retryWrites=true&w=majority`;
+
+console.log('mongodb', uri)
 
 const client: MongoClient = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
 
